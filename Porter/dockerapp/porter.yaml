@@ -1,0 +1,28 @@
+name: web-app
+version: 0.1.0
+description: My web app
+registry: dockerhub
+
+required:
+  - docker
+
+mixins:
+  - docker-compose
+
+install:
+  - docker-compose:
+      arguments:
+        - up
+        - -d
+
+upgrade:
+  - docker-compose:
+      arguments:
+        - up
+        - -d
+
+
+uninstall:
+  - docker-compose:
+      arguments:
+        - down

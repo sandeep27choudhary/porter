@@ -1,0 +1,37 @@
+name: mongo
+description: "mongodb example"
+registry: dockerhub
+
+required:
+  - docker
+
+
+parameters:
+  - name: mongo
+    description: mongodb connection
+    type: string
+    default: "hi from mongo"
+    applyTo:
+      - say
+
+mixins:
+  - docker
+
+install:
+  - docker:
+      run:
+        image: "sancho27/webapp:1.0"
+        arguments:
+          - cowsay
+          - mongo started
+
+
+uninstall:
+  - docker:
+      run:
+        image: "sancho27/webapp:1.0"
+        rm: true
+        arguments:
+          - cowsay
+          - mongo stoped
+
